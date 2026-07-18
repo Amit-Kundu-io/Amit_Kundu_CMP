@@ -17,3 +17,10 @@ captures
 !*.xcworkspace/contents.xcworkspacedata
 **/xcshareddata/WorkspaceSettings.xcsettings
 node_modules/
+
+# But keep this specific folder
+!webApp/build/
+!webApp/build/dist/
+!webApp/build/dist/wasmJs/
+!webApp/build/dist/wasmJs/productionExecutable/
+!webApp/build/dist/wasmJs/productionExecutable/*
