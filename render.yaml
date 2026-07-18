@@ -1,0 +1,8 @@
+services:
+  - type: static
+    name: portfolio-cmp
+    buildCommand: |
+      chmod +x gradlew
+      ./gradlew wasmJsBrowserDistribution
+    staticPublishPath: webApp/build/dist/wasmJs/productionExecutable
+    env: static
