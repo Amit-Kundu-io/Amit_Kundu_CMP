@@ -11,7 +11,7 @@ RUN ./gradlew :webApp:wasmJsBrowserDistribution
 # ---------- Runtime Stage ----------
 FROM nginx:alpine
 
-COPY --from=builder /app/webApp/build/dist/js/productionExecutable/ /usr/share/nginx/html
+COPY --from=builder /app/webApp/build/dist/wasmJs/productionExecutable/ /usr/share/nginx/html/
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
