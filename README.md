@@ -1,27 +1,51 @@
-This is a Kotlin Multiplatform project targeting Web.
+# 🌐 Portfolio Website | Compose Multiplatform (CMP)
 
-* [/shared](./shared/src) is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - [commonMain](./shared/src/commonMain/kotlin) is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    the [iosMain](./shared/src/iosMain/kotlin) folder would be the right place for such calls.
-    Similarly, if you want to edit the Desktop (JVM) specific part, the [jvmMain](./shared/src/jvmMain/kotlin)
-    folder is the appropriate location.
+A modern, responsive personal portfolio website built with **Kotlin** and **Compose Multiplatform (Wasm)** to showcase my projects, skills, and experience.
 
-### Running the apps
+## ✨ Features
 
-Use the run configurations provided by the run widget in your IDE's toolbar. You can also use these commands and options:
+- 🎨 Modern UI with Compose Multiplatform
+- ⚡ WebAssembly (Wasm) support
+- 📱 Responsive design
+- 🌙 Smooth animations
+- 🚀 Optimized for performance
 
-- Web app:
-  - Wasm target (faster, modern browsers): `./gradlew :webApp:wasmJsBrowserDevelopmentRun`
-  - JS target (slower, supports older browsers): `./gradlew :webApp:jsBrowserDevelopmentRun`
+## 🛠 Tech Stack
 
----
+- Kotlin
+- Compose Multiplatform
+- WebAssembly (Wasm)
+- Material 3
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+## 📦 Prerequisites
 
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [YouTrack](https://youtrack.jetbrains.com/newIssue?project=CMP).
+- JDK 21+
+- Git
+- Gradle (or use the included Gradle Wrapper)
+
+## 🚀 Run Locally
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/Portfolio_CMP.git
+cd Portfolio_CMP
+```
+
+### 2. Run the development server
+
+```bash
+./gradlew :webApp:wasmJsBrowserDevelopmentRun
+```
+
+## 🏗 Build for Production
+
+```bash
+./gradlew :webApp:wasmJsBrowserDistribution
+```
+
+The production files will be generated in:
+
+```
+webApp/build/dist/wasmJs/productionExecutable
+```
