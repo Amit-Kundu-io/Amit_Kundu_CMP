@@ -3,10 +3,12 @@
  *
  * Author      : Amit Kundu
  * Created On  : 18/07/2026
+ * Updated On  : 31/07/2026 — premium redesign pass
  *
  * Description :
- * Part of the project codebase. This file contributes to the overall
- * functionality and follows standard coding practices and architecture.
+ * Thin wrapper around [HeroSection]. Height is no longer hard-coded — the
+ * hero manages its own responsive sizing based on content and device type,
+ * so this simply forwards the scroll-anchor modifier from [com.amit_kundu_io.App].
  *
  * Notes :
  * Ensure changes are consistent with project guidelines and maintain
@@ -15,28 +17,11 @@
 
 package com.amit_kundu_io.presentation.HomeSection
 
-
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 
 @Composable
 fun HomeSection(modifier: Modifier) {
-
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .height(700.dp),
-
-        contentAlignment = Alignment.Center
-    ) {
-
-        HeroSection()
-
-    }
-
+    HeroSection(modifier = modifier.fillMaxWidth())
 }

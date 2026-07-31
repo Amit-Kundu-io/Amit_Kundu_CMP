@@ -3,10 +3,13 @@
  *
  * Author      : Amit Kundu
  * Created On  : 18/07/2026
+ * Updated On  : 31/07/2026 — premium redesign pass
  *
  * Description :
- * Part of the project codebase. This file contributes to the overall
- * functionality and follows standard coding practices and architecture.
+ * Hero / landing section. Fully responsive (stacked on mobile/tablet, side
+ * by side on desktop/web), animated floating gradient blobs in the
+ * background, gradient headline, staggered entrance animation and a
+ * gently floating profile avatar.
  *
  * Notes :
  * Ensure changes are consistent with project guidelines and maintain
@@ -15,191 +18,101 @@
 
 package com.amit_kundu_io.presentation.HomeSection
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.slideInHorizontally
-import androidx.compose.animation.slideInVertically
-import androidx.compose.animation.core.FastOutSlowInEasing
+import amitkundu.shared.generated.resources.Amit
+import amitkundu.shared.generated.resources.Res
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.amit_kundu_io.presentation.components.GradientButton
+import com.amit_kundu_io.presentation.components.GradientText
+import com.amit_kundu_io.presentation.components.OutlineButton
+import com.amit_kundu_io.presentation.components.RevealOnAppear
+import com.amit_kundu_io.presentation.components.SocialIconButton
+import com.amit_kundu_io.theme.DeviceType
+import com.amit_kundu_io.theme.LocalDeviceType
+import com.amit_kundu_io.theme.LocalIsDarkTheme
+import com.amit_kundu_io.theme.LocalSpacing
+import com.amit_kundu_io.theme.brandGradient
+import com.amit_kundu_io.theme.isCompact
 import kotlinx.browser.window
+import org.jetbrains.compose.resources.painterResource
 
 @Composable
-fun HeroSection() {
-
-    var visible by remember { mutableStateOf(false) }
-
-    LaunchedEffect(Unit) {
-        visible = true
-    }
+fun HeroSection(modifier: Modifier = Modifier) {
+    val spacing = LocalSpacing.current
+    val deviceType = LocalDeviceType.current
 
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .height(720.dp)
-            .background(
-                Brush.verticalGradient(
-                    listOf(
-                        Color(0xFF0F172A),
-                        Color(0xFF111827),
-                        Color(0xFF0D1117)
-                    )
-                )
-            )
+            .background(MaterialTheme.colorScheme.background)
     ) {
+        FloatingBackgroundBlobs(modifier = Modifier.fillMaxSize())
 
-        AnimatedVisibility(
-            visible = visible,
-            enter = fadeIn(
-                tween(800)
-            ) + slideInHorizontally(
-                animationSpec = tween(
-                    durationMillis = 800,
-                    easing = FastOutSlowInEasing
-                ),
-                initialOffsetX = { -300 }
-            )
+        BoxWithConstraints(
+            modifier = Modifier
+                .fillMaxWidth()
+                .widthIn(max = spacing.maxContentWidth + spacing.horizontal * 2)
+                .padding(horizontal = spacing.horizontal, vertical = spacing.section)
         ) {
-
-            Row(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(horizontal = 72.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-
+            if (deviceType.isCompact) {
                 Column(
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-
-                    Text(
-                        "Hi, I'm",
-                        color = Color.LightGray,
-                        fontSize = 24.sp
-                    )
-
-                    Spacer(Modifier.height(8.dp))
-
-                    Text(
-                        "Amit Kundu",
-                        color = Color.White,
-                        fontSize = 58.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-
-                    Spacer(Modifier.height(18.dp))
-
-                    Text(
-                        "Android Developer • Compose Multiplatform Developer",
-                        color = Color(0xFF3DDC84),
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-
-                    Spacer(Modifier.height(24.dp))
-
-                    Text(
-                        text =
-                            "Android Developer with internship experience building production-ready apps using Kotlin, Jetpack Compose, Ktor, MVVM/MVI and Clean Architecture.\n\nPassionate about building beautiful, fast and scalable applications.",
-                        color = Color(0xFFB3B3B3),
-                        lineHeight = 28.sp,
-                        fontSize = 18.sp
-                    )
-
-                    Spacer(Modifier.height(36.dp))
-
-                    Row {
-
-                        Button(
-                            onClick = { }
-                        ) {
-
-                            Text("Download Resume")
-                        }
-
-                        Spacer(Modifier.width(16.dp))
-
-                        OutlinedButton(
-                            onClick = {
-                                window.open(
-                                    url = "https://github.com/Amit-Kundu-io",
-                                    target = "_blank"
-                                )
-                            }
-                        ) {
-                            Text("GitHub")
-                        }
-
-                        Spacer(Modifier.width(16.dp))
-
-                        OutlinedButton(
-                            onClick = {
-                                window.open(
-                                    url = "https://linkedin.com/in/amit-kundu-io",
-                                    target = "_blank"
-                                )
-                            }
-                        ) {
-                            Text("LinkedIn")
-                        }
-
-                    }
-
+                    RevealOnAppear(delayMillis = 100) { m -> ProfileAvatar(modifier = m) }
+                    Spacer(Modifier.height(32.dp))
+                    HeroCopy(textAlign = TextAlign.Center, alignment = Alignment.CenterHorizontally)
                 }
-
-                Spacer(Modifier.width(60.dp))
-
-                AnimatedVisibility(
-                    visible = visible,
-                    enter = fadeIn(
-                        tween(1000)
-                    ) + slideInVertically(
-                        tween(1000)
-                    )
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-
-                    Surface(
-                        modifier = Modifier
-                            .size(320.dp)
-                            .clip(CircleShape),
-                        color = Color(0xFF1E293B),
-                        tonalElevation = 8.dp
-                    ) {
-
-                        Box(
-                            contentAlignment = Alignment.Center
-                        ) {
-
-                            Text(
-                                "Your\nPhoto",
-                                textAlign = TextAlign.Center,
-                                color = Color.White
-                            )
-
-                        }
-
+                    Column(modifier = Modifier.weight(1f)) {
+                        HeroCopy(textAlign = TextAlign.Start, alignment = Alignment.Start)
                     }
-
+                    Spacer(Modifier.width(64.dp))
+                    RevealOnAppear(delayMillis = 150) { m -> ProfileAvatar(modifier = m) }
                 }
-
             }
-
         }
-
     }
-
 }
+
+
+
