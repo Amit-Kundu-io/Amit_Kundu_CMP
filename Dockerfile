@@ -17,14 +17,14 @@ COPY . .
 
 RUN chmod +x gradlew
 
-RUN ./gradlew :webApp:wasmJsBrowserDistribution --no-daemon
+RUN ./gradlew :webApp:jsBrowserDistribution --no-daemon
 
 FROM nginx:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder \
-    /app/webApp/build/dist/wasmJs/productionExecutable/ \
+    /app/webApp/build/dist/js/productionExecutable/ \
     /usr/share/nginx/html/
 
 EXPOSE 80
