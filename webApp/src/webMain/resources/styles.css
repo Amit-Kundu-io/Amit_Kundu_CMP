@@ -5,3 +5,26 @@ html, body {
     padding: 0;
     overflow: hidden;
 }
+
+#initial-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    background: #0a0c12;
+    transition: opacity 240ms ease, visibility 240ms ease;
+}
+
+#initial-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-gif {
+    display: block;
+    width: clamp(120px, 40vw, 260px);
+    max-width: calc(100vw - 32px);
+    height: auto;
+}
