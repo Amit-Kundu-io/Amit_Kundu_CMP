@@ -69,7 +69,7 @@ private val projects = listOf(
         primaryUrl = StaticLinks.KEVORIN_REPO
     ),
     Project(
-        title = "Portfolio Website — CMP",
+        title = "Portfolio Website",
         badge = "OPEN SOURCE",
         description = "The Compose Multiplatform source for this very portfolio site.",
         tech = listOf("Kotlin", "Compose Multiplatform",),
