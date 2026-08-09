@@ -69,10 +69,10 @@ private val projects = listOf(
         primaryUrl = StaticLinks.KEVORIN_REPO
     ),
     Project(
-        title = "Amit Kundu — CMP",
+        title = "Portfolio Website — CMP",
         badge = "OPEN SOURCE",
         description = "The Compose Multiplatform source for this very portfolio site.",
-        tech = listOf("Kotlin", "Compose Multiplatform"),
+        tech = listOf("Kotlin", "Compose Multiplatform",),
         primaryLabel = "View Repository",
         primaryUrl = StaticLinks.PORTFOLIO_CMP_REPO
     ),
@@ -80,7 +80,7 @@ private val projects = listOf(
         title = "Smart Spend",
         badge = "OPEN SOURCE",
         description = "A Kotlin Android app for tracking spending and managing a personal budget.",
-        tech = listOf("Kotlin", "Jetpack Compose"),
+        tech = listOf("Kotlin", "Jetpack Compose","Ktor", "MVI", "Clean Architecture"),
         primaryLabel = "View Repository",
         primaryUrl = StaticLinks.SMART_SPEND_REPO
     ),
@@ -88,7 +88,7 @@ private val projects = listOf(
         title = "Skillforge",
         badge = "OPEN SOURCE",
         description = "A Kotlin Android project focused on skill-building and structured learning.",
-        tech = listOf("Kotlin", "Jetpack Compose"),
+        tech = listOf("Kotlin", "Jetpack Compose","Ktor", "MVI", "Clean Architecture"),
         primaryLabel = "View Repository",
         primaryUrl = StaticLinks.SKILLFORGE_REPO
     ),
@@ -105,7 +105,7 @@ private val projects = listOf(
         title = "Gamopedia",
         badge = "OPEN SOURCE",
         description = "A Compose Multiplatform app for browsing and discovering video game information.",
-        tech = listOf("Kotlin", "Compose Multiplatform"),
+        tech = listOf("Kotlin", "Compose Multiplatform","Ktor", "MVI", "Clean Architecture"),
         primaryLabel = "View Repository",
         primaryUrl = StaticLinks.GAMOPEDIA_CMP_REPO
     ),
@@ -113,7 +113,7 @@ private val projects = listOf(
         title = "Melofy",
         badge = "OPEN SOURCE",
         description = "A Kotlin Android music app, paired with the Melofy-Server backend.",
-        tech = listOf("Kotlin", "Jetpack Compose"),
+        tech = listOf("Kotlin", "Jetpack Compose","Ktor", "MVI", "Clean Architecture"),
         primaryLabel = "View Repository",
         primaryUrl = StaticLinks.MELOFY_REPO,
         secondaryLabel = "Server Repo",
