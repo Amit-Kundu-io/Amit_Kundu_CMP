@@ -2,11 +2,13 @@
  * CategoryBlock.kt
  *
  * Author      : Amit Kundu
- * Created On  : 31/07/2026
+ * Updated On  : redesign pass
  *
  * Description :
- * Part of the project codebase. This file contributes to the overall
- * functionality and follows standard coding practices and architecture.
+ * One skill category: an accent-bar title row followed by a wrapping cloud
+ * of [SkillChip]s (a Compose FlowRow) instead of a fixed-column grid of
+ * progress-bar cards. This reflows naturally at any width and keeps the
+ * section short and scannable instead of tall and repetitive.
  *
  * Notes :
  * Ensure changes are consistent with project guidelines and maintain
@@ -26,7 +28,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -37,16 +38,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
-import com.amit_kundu_io.presentation.skillsSection.models.Skill
 import com.amit_kundu_io.presentation.skillsSection.models.SkillCategory
-import com.amit_kundu_io.theme.LocalDeviceType
 import com.amit_kundu_io.theme.brandGradient
-import com.amit_kundu_io.theme.isCompact
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun CategoryBlock(category: SkillCategory, modifier: Modifier = Modifier) {
-    val deviceType = LocalDeviceType.current
-
     Column(modifier = modifier.fillMaxWidth()) {
         // accent bar + title, gives each category a visual anchor
         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -74,29 +71,13 @@ fun CategoryBlock(category: SkillCategory, modifier: Modifier = Modifier) {
 
         Spacer(Modifier.height(18.dp))
 
-        // fixed-column grid instead of FlowRow — keeps card widths
-        // and row alignment consistent across screen sizes
-        val columns = when {
-            deviceType.isCompact -> 1
-            else -> 2
-        }
-        SkillGrid(skills = category.skills, columns = columns)
-    }
-}
-
-@Composable
-private fun SkillGrid(skills: List<Skill>, columns: Int) {
-    val rows = skills.chunked(columns)
-    Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        rows.forEach { rowSkills ->
-            Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
-                rowSkills.forEach { skill ->
-                    SkillCard(skill = skill, modifier = Modifier.weight(1f))
-                }
-                // pad out incomplete last row so cards don't stretch full width
-                repeat(columns - rowSkills.size) {
-                    Spacer(Modifier.weight(1f))
-                }
+        // wrapping chip cloud — reflows at any width, no manual column math
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            category.skills.forEach { skill ->
+                SkillChip(skill = skill)
             }
         }
     }

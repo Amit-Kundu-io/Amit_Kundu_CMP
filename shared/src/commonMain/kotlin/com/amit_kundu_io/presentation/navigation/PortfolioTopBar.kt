@@ -64,16 +64,18 @@ fun PortfolioTopBar(
     onHomeClick: () -> Unit,
     onAboutClick: () -> Unit,
     onSkillsClick: () -> Unit,
+    onProjectsClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val spacing = LocalSpacing.current
     val deviceType = LocalDeviceType.current
 
-    val links = remember(onHomeClick, onAboutClick, onSkillsClick) {
+    val links = remember(onHomeClick, onAboutClick, onSkillsClick, onProjectsClick) {
         listOf(
             NavLink("Home", onHomeClick),
             NavLink("About", onAboutClick),
-            NavLink("Skills", onSkillsClick)
+            NavLink("Skills", onSkillsClick),
+            NavLink("Projects", onProjectsClick)
         )
     }
 
@@ -109,6 +111,9 @@ fun PortfolioTopBar(
                     }
                     TextButton(onClick = onSkillsClick) {
                         Text("Skills", color = MaterialTheme.colorScheme.onSurface)
+                    }
+                    TextButton(onClick = onProjectsClick) {
+                        Text("Projects", color = MaterialTheme.colorScheme.onSurface)
                     }
                     Spacer(Modifier.width(8.dp))
                 }

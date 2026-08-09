@@ -29,6 +29,7 @@ import com.amit_kundu_io.presentation.AboutSection.AboutSection
 import com.amit_kundu_io.presentation.HomeSection.HeroSection
 import com.amit_kundu_io.presentation.HomeSection.HomeSection
 import com.amit_kundu_io.presentation.navigation.PortfolioTopBar
+import com.amit_kundu_io.presentation.ProjectsSection.ProjectsSection
 import com.amit_kundu_io.presentation.skillsSection.SkillsSection
 import com.amit_kundu_io.theme.LocalDeviceType
 import com.amit_kundu_io.theme.LocalIsDarkTheme
@@ -58,7 +59,7 @@ fun App() {
                 var headerHeightPx by remember { mutableIntStateOf(0) }
 
                 // measured height of every item, keyed by lazy index
-                // (0 = sticky header, 1 = Home, 2 = About, 3 = Skills)
+                // (0 = sticky header, 1 = Home, 2 = About, 3 = Skills, 4 = Projects)
                 val itemHeights = remember { mutableStateMapOf<Int, Int>() }
 
                 fun scrollToItem(index: Int) {
@@ -82,6 +83,7 @@ fun App() {
                                 onHomeClick = { scrollToItem(1) },
                                 onAboutClick = { scrollToItem(2) },
                                 onSkillsClick = { scrollToItem(3) },
+                                onProjectsClick = { scrollToItem(4) },
                                 modifier = Modifier.onGloballyPositioned {
                                     headerHeightPx = it.size.height
                                     itemHeights[0] = it.size.height
@@ -107,6 +109,13 @@ fun App() {
                             SkillsSection(
                                 modifier = Modifier.onGloballyPositioned {
                                     itemHeights[3] = it.size.height
+                                }
+                            )
+                        }
+                        item {
+                            ProjectsSection(
+                                modifier = Modifier.onGloballyPositioned {
+                                    itemHeights[4] = it.size.height
                                 }
                             )
                         }
