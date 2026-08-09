@@ -22,11 +22,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 /** Breakpoints: Mobile < 600dp, Tablet 600–1023dp, Desktop/Web >= 1024dp. */
-enum class DeviceType { Mobile, Tablet, Desktop }
+enum class DeviceType { Mobile, Tablet, Desktop, LargeDesktop }
 
 /** Convenience checks used throughout the section composables. */
 val DeviceType.isMobile get() = this == DeviceType.Mobile
 val DeviceType.isCompact get() = this == DeviceType.Mobile || this == DeviceType.Tablet
+val DeviceType.isLarge get() = this == DeviceType.LargeDesktop
 
 data class Spacing(
     /** Outer left/right padding for section content. */
@@ -44,7 +45,8 @@ data class Spacing(
 fun deviceTypeFor(width: Dp): DeviceType = when {
     width < 600.dp -> DeviceType.Mobile
     width < 1024.dp -> DeviceType.Tablet
-    else -> DeviceType.Desktop
+    width < 1600.dp -> DeviceType.Desktop
+    else -> DeviceType.LargeDesktop
 }
 
 fun spacingFor(deviceType: DeviceType): Spacing = when (deviceType) {
@@ -63,6 +65,14 @@ fun spacingFor(deviceType: DeviceType): Spacing = when (deviceType) {
         maxContentWidth = 900.dp
     )
     DeviceType.Desktop -> Spacing(
+        horizontal = 96.dp,
+        section = 120.dp,
+        card = 24.dp,
+        content = 20.dp,
+        maxContentWidth = 1200.dp
+    )
+
+    DeviceType.LargeDesktop -> Spacing(
         horizontal = 96.dp,
         section = 120.dp,
         card = 24.dp,

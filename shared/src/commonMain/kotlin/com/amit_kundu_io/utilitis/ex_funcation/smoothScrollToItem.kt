@@ -59,3 +59,26 @@ suspend fun LazyListState.smoothScrollToItem(
         }
     }
 }
+
+
+suspend fun LazyListState.smoothScrollToItem(
+    index: Int,
+    headerOffsetPx: Int,
+    durationMillis: Int = 1200
+) {
+    // First jump to the target so LazyColumn can compose it.
+    scrollToItem(
+        index = index,
+        scrollOffset = -headerOffsetPx
+    )
+
+    // Now the target exists and LazyColumn knows its position.
+    // Unfortunately, animateScrollToItem() does not expose
+    // a custom duration in the public API.
+
+    // Therefore, for Wasm, use the built-in animation.
+    animateScrollToItem(
+        index = index,
+        scrollOffset = -headerOffsetPx
+    )
+}

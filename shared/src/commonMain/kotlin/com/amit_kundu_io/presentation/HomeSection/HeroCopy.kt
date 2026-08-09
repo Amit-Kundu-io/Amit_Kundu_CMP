@@ -49,6 +49,7 @@ import kotlinx.browser.window
         DeviceType.Desktop -> MaterialTheme.typography.displayLarge
         DeviceType.Tablet -> MaterialTheme.typography.displayMedium
         DeviceType.Mobile -> MaterialTheme.typography.displaySmall
+        else -> {MaterialTheme.typography.displayLarge}
     }
 
     Column(horizontalAlignment = alignment) {

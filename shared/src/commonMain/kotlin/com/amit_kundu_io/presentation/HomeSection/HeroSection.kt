@@ -18,15 +18,6 @@
 
 package com.amit_kundu_io.presentation.HomeSection
 
-import amitkundu.shared.generated.resources.Amit
-import amitkundu.shared.generated.resources.Res
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -37,38 +28,20 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.blur
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.amit_kundu_io.presentation.components.GradientButton
-import com.amit_kundu_io.presentation.components.GradientText
-import com.amit_kundu_io.presentation.components.OutlineButton
 import com.amit_kundu_io.presentation.components.RevealOnAppear
-import com.amit_kundu_io.presentation.components.SocialIconButton
-import com.amit_kundu_io.theme.DeviceType
 import com.amit_kundu_io.theme.LocalDeviceType
-import com.amit_kundu_io.theme.LocalIsDarkTheme
 import com.amit_kundu_io.theme.LocalSpacing
-import com.amit_kundu_io.theme.brandGradient
 import com.amit_kundu_io.theme.isCompact
-import kotlinx.browser.window
-import org.jetbrains.compose.resources.painterResource
+import com.amit_kundu_io.theme.isLarge
 
 @Composable
 fun HeroSection(modifier: Modifier = Modifier) {
@@ -79,7 +52,8 @@ fun HeroSection(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.background)
-    ) {
+    )
+    {
         FloatingBackgroundBlobs(modifier = Modifier.fillMaxSize())
 
         BoxWithConstraints(
@@ -96,6 +70,42 @@ fun HeroSection(modifier: Modifier = Modifier) {
                     RevealOnAppear(delayMillis = 100) { m -> ProfileAvatar(modifier = m) }
                     Spacer(Modifier.height(32.dp))
                     HeroCopy(textAlign = TextAlign.Center, alignment = Alignment.CenterHorizontally)
+                }
+            } else if (deviceType.isLarge) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 48.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .widthIn(max = 1400.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Column(
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            HeroCopy(
+                                textAlign = TextAlign.Start,
+                                alignment = Alignment.Start
+                            )
+                        }
+
+                        Spacer(
+                            modifier = Modifier.width(64.dp)
+                        )
+
+                        RevealOnAppear(
+                            delayMillis = 150
+                        ) { m ->
+                            ProfileAvatar(
+                                modifier = m
+                            )
+                        }
+                    }
                 }
             } else {
                 Row(

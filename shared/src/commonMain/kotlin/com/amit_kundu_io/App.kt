@@ -66,7 +66,6 @@ fun App() {
                     scope.launch {
                         listState.smoothScrollToItem(
                             index = index,
-                            itemHeights = itemHeights,
                             headerOffsetPx = headerHeightPx,
                             durationMillis = 1200
                         )
