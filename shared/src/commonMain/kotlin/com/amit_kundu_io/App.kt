@@ -135,7 +135,7 @@ fun App() {
                         exit = fadeOut() + scaleOut(),
                         modifier = Modifier
                             .align(Alignment.BottomEnd)
-                            .padding(spacing.horizontal, bottom = 24.dp)
+                            .padding(spacing.horizontal, bottom = 32.dp, end = 24.dp)
                     ) {
                         FloatingActionButton(
                             onClick = {

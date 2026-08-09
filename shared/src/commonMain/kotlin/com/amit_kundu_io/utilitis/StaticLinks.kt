@@ -29,6 +29,17 @@ object StaticLinks {
 
     // NOTE: the two repo slugs below could not be confirmed automatically —
     // double check they match the real repo URLs and fix if not.
-    const val DEVRANK_REPO = "https://github.com/Amit-Kundu-io/DevRank"
+    const val DEVRANK_REPO = "https://github.com/Amit-Kundu-io/Dev-Rank"
     const val EMPLOYEE_LOCATION_REPO = "https://github.com/Amit-Kundu-io/Employee-Location-Display-App"
+
+
+    const val PORTFOLIO_CMP_REPO = "https://github.com/Amit-Kundu-io/Amit_Kundu_CMP"
+    const val MELOFY_REPO = "https://github.com/Amit-Kundu-io/Melofy"
+    const val MELOFY_SERVER_REPO = "https://github.com/Amit-Kundu-io/Melofy-Server"
+    const val SKILLFORGE_REPO = "https://github.com/Amit-Kundu-io/Skillforge"
+    const val SMART_SPEND_REPO = "https://github.com/Amit-Kundu-io/Smart-Spend"
+    const val APP_LIMIT_REPO = "https://github.com/Amit-Kundu-io/App-Limit"
+    const val KEVORIN_REPO = "https://github.com/Amit-Kundu-io/Kevorin"
+    const val GAMOPEDIA_CMP_REPO = "https://github.com/Amit-Kundu-io/Gamopedia-CMP"
+
 }

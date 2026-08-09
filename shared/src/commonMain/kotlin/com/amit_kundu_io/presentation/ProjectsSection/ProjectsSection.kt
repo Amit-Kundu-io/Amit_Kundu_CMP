@@ -43,8 +43,8 @@ private val projects = listOf(
         title = "Stay Focus",
         badge = "LIVE ON PLAY STORE",
         description = "A screen-time reducer that blocks YouTube Shorts, Instagram Reels and other " +
-            "short-form content via Android's Accessibility Service, with daily time limits and " +
-            "app-restriction features to help cut down on doom-scrolling.",
+                "short-form content via Android's Accessibility Service, with daily time limits and " +
+                "app-restriction features to help cut down on doom-scrolling.",
         tech = listOf("Kotlin", "Jetpack Compose", "Material 3", "DataStore", "Accessibility Service"),
         primaryLabel = "View on Play Store",
         primaryUrl = StaticLinks.STAY_FOCUS_PLAY_STORE,
@@ -54,21 +54,73 @@ private val projects = listOf(
         title = "DevRank",
         badge = "OPEN SOURCE",
         description = "A Compose Multiplatform app for exploring top-starred GitHub repositories and " +
-            "developer profiles, built with MVI so app state stays predictable and easy to debug.",
+                "developer profiles, built with MVI so app state stays predictable and easy to debug.",
         tech = listOf("Kotlin", "Compose Multiplatform", "Ktor", "MVI", "Clean Architecture"),
         primaryLabel = "View Repository",
         primaryUrl = StaticLinks.DEVRANK_REPO
     ),
     Project(
-        title = "Employee Location Display App",
+        title = "Kevorin",
         badge = "OPEN SOURCE",
-        description = "An Android app that shows employee locations on a live map, using the Google " +
-            "Maps SDK for markers and REST APIs for location data.",
-        tech = listOf("Kotlin", "Jetpack Compose", "Google Maps SDK", "REST API"),
+        description = "A modern Kotlin Multiplatform toolkit for reusable utilities, UI, and core " +
+                "features shared across Android and iOS.",
+        tech = listOf("Kotlin", "Kotlin Multiplatform"),
         primaryLabel = "View Repository",
-        primaryUrl = StaticLinks.EMPLOYEE_LOCATION_REPO
-    )
+        primaryUrl = StaticLinks.KEVORIN_REPO
+    ),
+    Project(
+        title = "Amit Kundu — CMP",
+        badge = "OPEN SOURCE",
+        description = "The Compose Multiplatform source for this very portfolio site.",
+        tech = listOf("Kotlin", "Compose Multiplatform"),
+        primaryLabel = "View Repository",
+        primaryUrl = StaticLinks.PORTFOLIO_CMP_REPO
+    ),
+    Project(
+        title = "Smart Spend",
+        badge = "OPEN SOURCE",
+        description = "A Kotlin Android app for tracking spending and managing a personal budget.",
+        tech = listOf("Kotlin", "Jetpack Compose"),
+        primaryLabel = "View Repository",
+        primaryUrl = StaticLinks.SMART_SPEND_REPO
+    ),
+    Project(
+        title = "Skillforge",
+        badge = "OPEN SOURCE",
+        description = "A Kotlin Android project focused on skill-building and structured learning.",
+        tech = listOf("Kotlin", "Jetpack Compose"),
+        primaryLabel = "View Repository",
+        primaryUrl = StaticLinks.SKILLFORGE_REPO
+    ),
+    Project(
+        title = "App Limit",
+        badge = "OPEN SOURCE",
+        description = "An earlier Kotlin Android app for limiting daily usage of chosen apps — a " +
+                "precursor to Stay Focus.",
+        tech = listOf("Kotlin", "Jetpack Compose"),
+        primaryLabel = "View Repository",
+        primaryUrl = StaticLinks.APP_LIMIT_REPO
+    ),
+    Project(
+        title = "Gamopedia",
+        badge = "OPEN SOURCE",
+        description = "A Compose Multiplatform app for browsing and discovering video game information.",
+        tech = listOf("Kotlin", "Compose Multiplatform"),
+        primaryLabel = "View Repository",
+        primaryUrl = StaticLinks.GAMOPEDIA_CMP_REPO
+    ),
+    Project(
+        title = "Melofy",
+        badge = "OPEN SOURCE",
+        description = "A Kotlin Android music app, paired with the Melofy-Server backend.",
+        tech = listOf("Kotlin", "Jetpack Compose"),
+        primaryLabel = "View Repository",
+        primaryUrl = StaticLinks.MELOFY_REPO,
+        secondaryLabel = "Server Repo",
+        secondaryUrl = StaticLinks.MELOFY_SERVER_REPO
+    ),
 )
+
 
 @Composable
 fun ProjectsSection(modifier: Modifier = Modifier) {
